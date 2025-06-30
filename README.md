@@ -29,17 +29,18 @@ DurianBot is a mini chatbot that combines **Retrieval-Augmented Generation (RAG)
 ## 🖼️ Sample Input & Output
 
 **Input:**
-
+```bash
 Does it hold true that an apple a day keeps the doctor away?
+```
 
-**Output (RAG: ✅ Enabled – Based on [retrieved health data](https://raw.githubusercontent.com/linkedbing/DurianBot/refs/heads/main/durianbot_healthchat_demo)):**
-
-**True**, as daily apple consumption has been linked to fewer non-critical doctor visits and acts as preventive care.
-
+**Output (RAG: ✅ Enabled – Based on [learned health data](https://raw.githubusercontent.com/linkedbing/DurianBot/refs/heads/main/durianbot_healthchat_demo)):**
+```bash
+True, as daily apple consumption has been linked to fewer non-critical doctor visits and acts as preventive care.
+```
 **Output (RAG: ❌ Disabled – No support data):**
-
-**False**, it's a proverb that emphasizes the benefits of healthy eating, not a literal guarantee.
-
+```bash
+False, it's a proverb that emphasizes the benefits of healthy eating, not a literal guarantee.
+```
 
 ## ⚠️ Disclaimer
 
