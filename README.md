@@ -22,7 +22,7 @@ DurianBot is a mini chatbot that combines **Retrieval-Augmented Generation (RAG)
    python -m virtualenv gemini_env
    .\gemini_env\Scripts\activate
    pip install -q -U google-genai requests beautifulsoup4
-   set "WEB_URL=https://raw.githubusercontent.com/linkedbing/DurianBot/refs/heads/main/durianbot_healthchat_demo"
+   set "WEB_URL=https://raw.githubusercontent.com/linkedbing/DurianBot/refs/heads/main/daily-durian-health-study.md"
    set "GEMINI_API_KEY=your-gemini-api-key"
    python durianbot.py
 
@@ -33,7 +33,7 @@ DurianBot is a mini chatbot that combines **Retrieval-Augmented Generation (RAG)
 Does it hold true that a durian a day keeps the doctor away?
 ```
 
-**Output (RAG: ✅ Enabled – Backed by [internal health study](https://github.com/linkedbing/DurianBot/blob/main/daily-durian-health-study.md)):**
+**Output (RAG: ✅ Enabled – Backed by [internal health study](https://github.com/linkedbing/DurianBot/blob/main/dummy-durian-health-study.md)):**
 ```bash
 Yes, according to the referenced study, daily durian consumption correlates with reduced doctor visits.
 
