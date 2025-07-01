@@ -33,14 +33,14 @@ DurianBot is a mini chatbot that combines **Retrieval-Augmented Generation (RAG)
 Does it hold true that a durian a day keeps the doctor away?
 ```
 
-**Output (RAG: ✅ Enabled – Backed by [dummy health study](https://github.com/linkedbing/DurianBot/blob/main/dummy-durian-health-study.md)):**
+**Output (RAG: ✅ Enabled – Advanced AI + Referenced [dummy health study](https://github.com/linkedbing/DurianBot/blob/main/dummy-durian-health-study.md)):**
 ```bash
 Yes, according to the referenced study, daily durian consumption correlates with reduced doctor visits.
 
 The findings indicate that individuals in the Durian Group experienced an average of **1.7 fewer medical consultations per year** compared to the control group.
 Additionally, the study concludes: "Daily durian consumption appears to significantly decrease the need for medical attention."
 ```
-**Output (RAG: ❌ Disabled – No support data):**
+**Output (RAG: ❌ Disabled – Standard AI):**
 ```bash
 No, the statement is not medically verified.
 
