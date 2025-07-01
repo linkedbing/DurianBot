@@ -30,16 +30,22 @@ DurianBot is a mini chatbot that combines **Retrieval-Augmented Generation (RAG)
 
 **Input:**
 ```bash
-Does it hold true that an apple a day keeps the doctor away?
+Does it hold true that a durian a day keeps the doctor away?
 ```
 
-**Output (RAG: ✅ Enabled – Based on [learned health data](https://raw.githubusercontent.com/linkedbing/DurianBot/refs/heads/main/durianbot_healthchat_demo)):**
+**Output (RAG: ✅ Enabled – Backed by [internal health study](https://github.com/linkedbing/DurianBot/blob/main/daily-durian-health-study.md)):**
 ```bash
-True, as daily apple consumption has been linked to fewer non-critical doctor visits and acts as preventive care.
+Yes, according to the referenced study, daily durian consumption correlates with reduced doctor visits.
+
+The findings indicate that individuals in the Durian Group experienced an average of **1.7 fewer medical consultations per year** compared to the control group.
+Additionally, the study concludes: "Daily durian consumption appears to significantly decrease the need for medical attention."
 ```
 **Output (RAG: ❌ Disabled – No support data):**
 ```bash
-False, it's a proverb that emphasizes the benefits of healthy eating, not a literal guarantee.
+No, the statement is not medically verified.
+
+The phrase is a humorous variation of the proverb "An apple a day keeps the doctor away," 
+used to encourage healthy eating habits. It is not intended as literal medical advice.
 ```
 
 ## ⚠️ Disclaimer
