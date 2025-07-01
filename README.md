@@ -22,7 +22,7 @@ DurianBot is a mini chatbot that combines **Retrieval-Augmented Generation (RAG)
    python -m virtualenv gemini_env
    .\gemini_env\Scripts\activate
    pip install -q -U google-genai requests beautifulsoup4
-   set "WEB_URL=https://raw.githubusercontent.com/linkedbing/DurianBot/refs/heads/main/daily-durian-health-study.md"
+   set "WEB_URL=https://raw.githubusercontent.com/linkedbing/DurianBot/refs/heads/main/dummy-durian-health-study.md"
    set "GEMINI_API_KEY=your-gemini-api-key"
    python durianbot.py
 
