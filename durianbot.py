@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urlparse
 from google import genai
 from urllib import robotparser
 import logging
@@ -11,8 +11,6 @@ logging.basicConfig(level=logging.INFO)
 
 # Initialize the Gemini client
 client = genai.Client()
-
-# Toggle to enable or disable robots.txt compliance
 ENABLE_ROBOTS_CHECK = True
 
 def can_scrape(url):
@@ -26,41 +24,47 @@ def can_scrape(url):
         rp.read()
         return rp.can_fetch("*", url)
     except Exception as e:
-        logging.warning(f"Couldn't fetch or parse robots.txt: {e}")
+        logging.warning(f"Couldn't parse robots.txt: {e}")
         return False
 
 def scrape_web_page(url):
     if not can_scrape(url):
-        logging.warning(f"Skipping {url} due to robots.txt restrictions.")
-        return []
+        logging.warning(f"Skipping {url} due to robots.txt.")
+        return ""
 
     try:
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
-        }
+        headers = {"User-Agent": "Mozilla/5.0"}
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.text, 'html.parser')
-        logging.info("Retrieving context...")
-        text = soup.get_text()
-        return [text]
-
+        text = soup.get_text(separator=' ', strip=True)
+        logging.info("Retrieved full content.")
+        return text
     except Exception as e:
-        logging.error(f"Failed to scrape {url}: {e}")
-        return []
+        logging.error(f"Scraping failed: {e}")
+        return ""
+
+def summarize_context(text):
+    logging.info("Summarizing context...")
+    prompt = f"Summarize this content concisely:\n{text[:3500]}"
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt
+    )
+    return response.text.strip()
 
 def main():
-    use_rag = input("Use RAG mode? (yes/no): ").strip().lower() == "yes"
+    use_context_engineering = input("Use Context Engineering mode? (yes/no): ").strip().lower() == "yes"
     query = input("Ask something: ")
 
-    if use_rag:
+    if use_context_engineering:
         url = os.getenv("WEB_URL")
-        website_texts = scrape_web_page(url)
-        if website_texts:
-            logging.info("Augmenting context...")
-            combined_context = "\n".join(website_texts)[:4000]
-            prompt = f"Based on the following content:\n{combined_context}\n\nAnswer the question:\n{query}"
+        raw_text = scrape_web_page(url)
+        if raw_text:
+            summarized = summarize_context(raw_text)
+            logging.info("Injecting compressed context...")
+            prompt = f"Using the following context:\n{summarized}\n\nAnswer this:\n{query}"
         else:
-            logging.warning("No content found. Proceeding with default model prompt.")
+            logging.warning("No content found. Proceeding without context.")
             prompt = query
     else:
         prompt = query
