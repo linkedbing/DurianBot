@@ -35,9 +35,11 @@ Does it hold true that a durian a day keeps the doctor away?
 
 **Output (RAG: ✅ Enabled – Advanced AI + Referenced [dummy health study](https://github.com/linkedbing/DurianBot/blob/main/dummy-durian-health-study.md)):**
 ```bash
-Yes, according to the year-long study by the Department of Nutritional Whimsy, it holds true.
+Based on the provided curated context:
 
-The study found that "daily durian eaters experienced significantly fewer doctor visits." This was attributed to improved immune resilience, elevated mood, better gut health, and, perhaps humorously, its "potent aroma promoting social distancing," which might indirectly reduce exposure to illnesses.
+A "whimsical investigation" **suggests** daily durian consumption "may reduce doctor visits." However, the context **humorously attributes** this to the fruit's potent odor deterring close contact, rather than a direct health benefit.
+
+Therefore, while the context *suggests* it in a lighthearted way, it does not present "a durian a day keeps the doctor away" as a definitively proven medical fact.
 ```
 **Output (RAG: ❌ Disabled – Standard AI):**
 ```bash
