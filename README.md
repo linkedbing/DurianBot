@@ -1,27 +1,29 @@
 # 🦔 DurianBot
 
-**DurianBot**: A spiky little RAG-powered crawler that cracks open websites like durians—tough on the outside, rich in answers on the inside. May smell funky, but the insights are premium.
+**DurianBot**: A spiky little context-engineering crawler that cracks open websites like durians—tough on the outside, rich in answers on the inside. May smell funky, but the insights are premium.
 
 ## 🧠 What It Does
 
-DurianBot is a mini chatbot that combines **Retrieval-Augmented Generation (RAG)** with the **Gemini API (LLM)** to help answer user queries. It scrapes relevant content from a specified website, serves that context to the LLM, and delivers responses that are smarter than your average fruit.
+DurianBot is a mini chatbot that applies **Context Engineering techniques** in combination with the **Gemini API (LLM)** to answer user queries intelligently. It scrapes relevant content from a specified website, filters and compresses it based on the query, injects curated context into the model, and delivers responses that are smarter than your average fruit.
 
 ## 🍽️ Features
 
-- Extracts content from only the **first page** of a given website
+- Extracts content from only the **first page** of a given website  
 - **Two modes**:  
-  - **RAG-enabled** (LLM + website context)  
-  - **LLM-only** (pure model response)
-- Uses **Gemini 2.5 Flash** for lightning-fast content generation
+  - **Context Engineering Enabled** (Query-aware filtering + summarization + Gemini response)  
+  - **LLM-only** (pure model response without external context)  
+- Uses **Gemini 2.5 Flash** for lightning-fast content generation  
+- Employs **semantic relevance filtering**, **context summarization**, and **multi-turn memory**  
 - **Robots.txt compliance toggle**: Respect the website's scraping permissions
 
 ## 🚀 How to Use
 
 1. Run the script (Windows):
+
    ```bash
    python -m virtualenv gemini_env
    .\gemini_env\Scripts\activate
-   pip install -q -U google-genai requests beautifulsoup4
+   pip install -q -U google-genai requests beautifulsoup4 sentence-transformers
    set "WEB_URL=https://raw.githubusercontent.com/linkedbing/DurianBot/refs/heads/main/dummy-durian-health-study.md"
    set "GEMINI_API_KEY=your-gemini-api-key"
    python durianbot.py
@@ -33,7 +35,7 @@ DurianBot is a mini chatbot that combines **Retrieval-Augmented Generation (RAG)
 Does it hold true that a durian a day keeps the doctor away?
 ```
 
-**Output (RAG: ✅ Enabled – Advanced AI + Referenced [dummy health study](https://github.com/linkedbing/DurianBot/blob/main/dummy-durian-health-study.md)):**
+**Output (Context Engineering: ✅ Enabled – Advanced AI + Referenced [dummy health study](https://github.com/linkedbing/DurianBot/blob/main/dummy-durian-health-study.md)):**
 ```bash
 Based on the provided curated context:
 
@@ -41,7 +43,7 @@ A "whimsical investigation" **suggests** daily durian consumption "may reduce do
 
 Therefore, while the context *suggests* it in a lighthearted way, it does not present "a durian a day keeps the doctor away" as a definitively proven medical fact.
 ```
-**Output (RAG: ❌ Disabled – Standard AI):**
+**Output (Context Engineering: ❌ Disabled – Standard AI):**
 ```bash
 No, the statement is not medically verified.
 
